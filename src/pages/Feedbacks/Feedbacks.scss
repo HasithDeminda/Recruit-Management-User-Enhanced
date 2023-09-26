@@ -1,0 +1,166 @@
+.feedbacks-content {
+  display: flex;
+  flex-direction: column;
+  margin: 50px 25px;
+
+  .feedbacks-content__section02 {
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 50px;
+
+    .feedbacks-content__section02-content {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .feedbacks-content__section02-content-title {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 36px;
+        line-height: 44px;
+        letter-spacing: 0.1em;
+        color: #000000;
+      }
+      .feedbacks-content__section02-content-subtitle {
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.1em;
+        color: #000000;
+      }
+
+      .feedbacks-content__section02-content-cfeedback {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        width: 100;
+        align-items: center;
+        justify-content: center;
+
+        .feedbacks-content__section02-content-cfeedback-text {
+          width: 60%;
+          height: 200px;
+          margin: 25px 0px;
+
+          textarea {
+            width: 100%;
+            height: 100%;
+            border: none;
+            box-sizing: border-box;
+            background: #e2f8f8;
+            border-radius: 20px;
+            padding: 10px;
+            outline: none;
+            padding: 20px;
+          }
+        }
+
+        .feedbacks-content__section02-content-cfeedback-text-btn-submit {
+          width: 175px;
+          height: 40px;
+          left: 571px;
+          top: 1828px;
+          color: white;
+          background: #17bf9e;
+          border: 1px solid #17bf9e;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  .feedbacks-content__section03 {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    // justify-content: center;
+    margin-top: 50px;
+
+    .feedbacks-content__section03-feedbackcard {
+      width: 400px;
+      height: 341px;
+
+      .feedbacks-content__section03-feedbackcard-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .feedbacks-content__section03-feedbackcard-header-left {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          .feedbacks-content__section03-feedbackcard-header-left-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+
+            img {
+              width: 100%;
+              height: 100%;
+              border-radius: 50%;
+            }
+          }
+
+          .feedbacks-content__section03-feedbackcard-header-left-name {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.1em;
+            color: #000000;
+          }
+        }
+
+        .feedbacks-content__section03-feedbackcard-right {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 10px;
+          margin-right: 20px;
+
+          .feedbacks-content__section03-feedbackcard-right-edit {
+            font-size: 20px;
+            cursor: pointer;
+          }
+          .feedbacks-content__section03-feedbackcard-right-delete {
+            font-size: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .feedbacks-content__section03-feedbackcard-content {
+        background: #ededed;
+        border-radius: 20px;
+        padding: 20px;
+        margin-top: 20px;
+        height: 200px;
+        min-height: 200px;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+    }
+  }
+  .feedback-stat_title {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: 0.05em;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  #ff {
+    background-color: #17bf9e;
+  }
+}

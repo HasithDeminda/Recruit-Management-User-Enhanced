@@ -1,0 +1,33 @@
+.Vcard-container {
+  width: 1200px;
+  height: 800px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px -5px;
+  border-radius: 25px;
+  transition: 0.3s;
+  margin-bottom: 2rem;
+  margin-left: 3rem;
+  animation: ease-in-out;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.Vimage-container img {
+  overflow: hidden;
+  height: 800px;
+  object-fit: cover;
+}
+
+/* .vl {
+  border-left: 6px solid green;
+  height: 500px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+} */
+
+.Vcard-title {
+  justify-content: left;
+}
