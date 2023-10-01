@@ -9,20 +9,22 @@ import Notifications from "../../Modals/Notifications";
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-    //Alert Notification
-    const [notify, setNotify] = useState({
-      isOpen: false,
-      message: "",
-      type: "",
-    });
-    
+  //Alert Notification
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
+
   const handleChange = ({ currentTarget: input }) => {
     setData({ ...data, [input.name]: input.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const url = "https://rwa-webapp.azurewebsites.net/api/user/userLogin";
       const { data: res } = await axios.post(url, data);
@@ -36,21 +38,13 @@ const Login = () => {
       ) {
         setError(error.response.data.message);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div
-      className="adminLoginContainer"
-      style={
-        {
-          // backgroundImage: "url(" + "" + ")",
-          // backgroundPosition: "center",
-          // backgroundSize: "cover",
-          // backgroundRepeat: "no-repeat",
-        }
-      }
-    >
+    <div className="adminLoginContainer">
       <Header />
       <div className={styles.login_container}>
         <div className={styles.login_form_container}>
@@ -76,8 +70,12 @@ const Login = () => {
                 className={styles.input}
               />
               {error && <div className={styles.error_msg}>{error}</div>}
-              <button type="submit" className={styles.green_btn}>
-                Sign In
+              <button
+                type="submit"
+                disabled={loading}
+                className={styles.green_btn}
+              >
+                {loading ? "Signing In..." : "Sign In"}
               </button>
             </form>
           </div>

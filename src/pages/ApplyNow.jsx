@@ -137,7 +137,8 @@ const ApplyNow = () => {
               console.log(data);
               axios
                 .post(
-                  `https://rwa-webapp.azurewebsites.net/api/applyJob/apply/${jobId}`,
+                  //Call API from .env file
+                  `${process.env.BE_URI}/job/apply/${jobId}`,
                   data,
                   {
                     headers: {
