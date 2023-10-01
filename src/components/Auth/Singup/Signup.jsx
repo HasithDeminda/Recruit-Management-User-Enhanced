@@ -5,7 +5,6 @@ import styles from "./styles.module.scss";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import Notifications from "../../Modals/Notifications";
-import { set } from "lodash";
 
 const Signup = () => {
   const [firstName, setFirstName] = useState("");

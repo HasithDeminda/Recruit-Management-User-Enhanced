@@ -11,7 +11,6 @@ import ActivateEmailTemp from "./components/EmailTemp/ActivateEmailTemp";
 import Notices from "./pages/Notices/Notices";
 import ViewNotice from "./pages/Notices/ViewNotice";
 
-
 import ApplyNow from "./pages/ApplyNow";
 import Feedbacks from "./pages/Feedbacks/Feedbacks";
 
