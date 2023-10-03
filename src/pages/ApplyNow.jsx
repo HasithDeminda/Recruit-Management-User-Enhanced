@@ -18,6 +18,8 @@ const ApplyNow = () => {
   //Get token from local storage
   const Token = localStorage.getItem("token");
 
+  const [btnLoading, setbtnLoading] = useState(false);
+
   const params = useParams();
 
   const jobId = params.id;
@@ -45,7 +47,7 @@ const ApplyNow = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    setbtnLoading(true);
     try {
       const PhoneNumberRegex = new RegExp("^[0-9-+]{9,15}$");
       const spetialCharaterRegex = new RegExp("[^A-Za-z\\s]");
@@ -120,10 +122,10 @@ const ApplyNow = () => {
             }
           },
           (error) => {
-            // Handle unsuccessful uploads
+            setbtnLoading(false);
           },
           () => {
-            // Handle successful uploads on complete
+            setbtnLoading(false);
             // For instance, get the download URL: https://firebasestorage.googleapis.com/...
             getDownloadURL(uploadTask.snapshot.ref).then((userResumeUrl) => {
               console.log("File available at :", userResumeUrl);
@@ -168,6 +170,8 @@ const ApplyNow = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      setbtnLoading(false);
     }
   };
   return (
@@ -311,18 +315,21 @@ const ApplyNow = () => {
               marginBottom: "50px",
             }}
           >
-            <input
-              type="submit"
-              value="Apply Now"
+            <button
+              type="button"
               onClick={handleSubmit}
+              disabled={btnLoading}
               style={{
                 padding: "10px 40px",
-                backgroundColor: "#17bf9e",
+                backgroundColor: btnLoading ? "#b4b4b4" : "#17bf9e",
                 color: "white",
                 border: "none",
                 borderRadius: "10px",
+                cursor: btnLoading ? "not-allowed" : "pointer",
               }}
-            />
+            >
+              {btnLoading ? "Applying..." : "Apply Now"}
+            </button>
           </div>
         </div>
       </div>

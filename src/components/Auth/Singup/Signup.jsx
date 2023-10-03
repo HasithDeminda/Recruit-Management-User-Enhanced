@@ -74,8 +74,7 @@ const Signup = () => {
             email,
             password,
           };
-          const url =
-            "https://rwa-webapp.azurewebsites.net/api/user/userRegister";
+          const url = "http://localhost:8090/api/user/userRegister";
           await axios
             .post(url, data)
             .then((res) => {

@@ -34,10 +34,11 @@ const navLinks = [
 ];
 
 //Get the user from local storage
-export const Token = localStorage.getItem("token");
+const cookie = document.cookie;
+export const cookieAuth = cookie.includes("recruitment");
 
 export const isLogged = () => {
-  if (Token) {
+  if (cookieAuth) {
     return true;
   } else {
     return false;
@@ -54,14 +55,9 @@ const Header = () => {
 
   useEffect(() => {
     axios
-      .get("https://rwa-webapp.azurewebsites.net/api/user/userProfile", {
-        headers: {
-          Authorization: `${Token}`,
-        },
-      })
+      .get("http://localhost:8090/api/user/userProfile", {})
       .then((res) => {
         setData(res.data.logedUser);
-        
       })
       .catch((err) => {
         console.log(err);

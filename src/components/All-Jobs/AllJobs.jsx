@@ -13,7 +13,7 @@ const AllJobs = () => {
     function getDetails() {
       setLoading(true);
       axios
-        .get("https://rwa-webapp.azurewebsites.net/api/jobMgt/GetAllActiveJobs")
+        .get("http://localhost:8090/api/jobMgt/GetAllActiveJobs")
         .then((res) => {
           setJobs(res.data.allActiveJobs);
         })

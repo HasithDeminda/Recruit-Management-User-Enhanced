@@ -26,7 +26,7 @@ const SavedJobs = () => {
   useEffect(() => {
     function getDetails() {
       axios
-        .get(`https://rwa-webapp.azurewebsites.net/api/savedjobs/savedJobs`, {
+        .get(`http://localhost:8090/api/savedjobs/savedJobs`, {
           headers: {
             Authorization: `${Token}`,
           },
@@ -53,7 +53,7 @@ const SavedJobs = () => {
     const search = e.target.value.toLowerCase();
 
     axios
-      .get(`https://rwa-webapp.azurewebsites.net/api/savedjobs/savedJobs`, {
+      .get(`http://localhost:8090/api/savedjobs/savedJobs`, {
         headers: {
           Authorization: `${Token}`,
         },

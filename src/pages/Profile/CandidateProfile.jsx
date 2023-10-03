@@ -31,6 +31,9 @@ const CandidateProfile = () => {
   //Get the user from local storage
   const Token = localStorage.getItem("token");
 
+  const cookie = document.cookie;
+  const cookieAuth = cookie.includes("recruitment");
+
   const [loading, setLoading] = useState(false);
 
   //get user data from db
@@ -76,14 +79,11 @@ const CandidateProfile = () => {
       isOpen: false,
     });
     axios
-      .delete(
-        `https://rwa-webapp.azurewebsites.net/api/user/deleteUserProfile`,
-        {
-          headers: {
-            Authorization: `${Token}`,
-          },
-        }
-      )
+      .delete(`http://localhost:8090/api/user/deleteUserProfile`, {
+        headers: {
+          Authorization: `${Token}`,
+        },
+      })
       .then((res) => {
         setNotify({
           isOpen: true,
@@ -117,8 +117,10 @@ const CandidateProfile = () => {
       type: "success",
     });
     localStorage.removeItem("token");
-    localStorage.removeItem("Token");
     localStorage.removeItem("Authorization");
+    //Remove cookie
+    document.cookie =
+      "recruitment=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     setTimeout((window.location.href = "/"), 1000);
   };
 
@@ -126,7 +128,7 @@ const CandidateProfile = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("https://rwa-webapp.azurewebsites.net/api/user/userProfile", {
+      .get("http://localhost:8090/api/user/userProfile", {
         headers: {
           Authorization: `${Token}`,
         },

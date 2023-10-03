@@ -5,6 +5,8 @@ import styles from "./styles.module.scss";
 import Header from "../../Header/Header";
 import Footer from "../../Footer/Footer";
 import Notifications from "../../Modals/Notifications";
+import { FcGoogle } from "react-icons/fc";
+import { FaFacebook } from "react-icons/fa";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
@@ -26,7 +28,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const url = "https://rwa-webapp.azurewebsites.net/api/user/userLogin";
+      const url = "http://localhost:8090/api/user/userLogin";
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.token);
       window.location = "/";
@@ -78,6 +80,55 @@ const Login = () => {
                 {loading ? "Signing In..." : "Sign In"}
               </button>
             </form>
+
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "10px",
+                textAlign: "center", // Added for better alignment
+              }}
+            >
+              <button
+                className={styles.social_media_btn}
+                onClick={() => {
+                  window.location.href = "http://localhost:8090/auth/google";
+                }}
+                style={{
+                  backgroundColor: "transparent",
+                  color: "#4285F4",
+                  border: "none",
+                  padding: "10px 20px",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  outline: "none",
+                }}
+              >
+                <span>
+                  <FcGoogle size={33} />
+                </span>
+              </button>
+
+              <button
+                className={styles.social_media_btn}
+                onClick={() => {
+                  window.location.href = "http://localhost:8090/auth/facebook";
+                }}
+                style={{
+                  backgroundColor: "transparent",
+                  color: "#1877F2",
+                  border: "none",
+                  padding: "10px 20px",
+                  borderRadius: "5px",
+                  cursor: "pointer",
+                  outline: "none",
+                }}
+              >
+                <span>
+                  <FaFacebook size={30} />
+                </span>
+              </button>
+            </div>
           </div>
           <div className={styles.right}>
             <h1>New Here ?</h1>

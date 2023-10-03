@@ -15,7 +15,7 @@ const Announcement = () => {
   useEffect(() => {
     function getNotice() {
       axios
-        .get(`https://rwa-webapp.azurewebsites.net/api/notice/specNotice/${id._id}`)
+        .get(`http://localhost:8090/api/notice/specNotice/${id._id}`)
         .then((res) => {
           setTitle(res.data.notice.title);
           setDescription(res.data.notice.description);
@@ -40,13 +40,13 @@ const Announcement = () => {
               <div className="Vimage-container">
                 {/* <img src={poster} /> */}
                 <img
-                src={
-                  poster
-                    ? poster
-                    : "https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/112815904-no-image-available-icon-flat-vector-illustration.jpg?ver=6"
-                }
-                alt=""
-              />
+                  src={
+                    poster
+                      ? poster
+                      : "https://us.123rf.com/450wm/pavelstasevich/pavelstasevich1811/pavelstasevich181101028/112815904-no-image-available-icon-flat-vector-illustration.jpg?ver=6"
+                  }
+                  alt=""
+                />
               </div>
 
               <div className="Rcard-context">

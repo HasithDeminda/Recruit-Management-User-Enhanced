@@ -36,14 +36,11 @@ const AppliedJobs = () => {
   useEffect(() => {
     function getDetails() {
       axios
-        .get(
-          "https://rwa-webapp.azurewebsites.net/api/applyJob/getUserAppliedJobs",
-          {
-            headers: {
-              Authorization: `${Token}`,
-            },
-          }
-        )
+        .get("http://localhost:8090/api/applyJob/getUserAppliedJobs", {
+          headers: {
+            Authorization: `${Token}`,
+          },
+        })
 
         .then((res) => {
           console.log(res.data.userAppliedjobs);
@@ -63,7 +60,7 @@ const AppliedJobs = () => {
   const deleteAppliedJob = (appliedJobId) => {
     axios
       .put(
-        `https://rwa-webapp.azurewebsites.net/api/applyJob/removeAppliedJob/${appliedJobId}`,
+        `http://localhost:8090/api/applyJob/removeAppliedJob/${appliedJobId}`,
         {
           headers: {
             Authorization: `${Token}`,
@@ -96,14 +93,11 @@ const AppliedJobs = () => {
     const searchKey = e.target.value.toLowerCase();
 
     axios
-      .get(
-        "https://rwa-webapp.azurewebsites.net/api/applyJob/getUserAppliedJobs",
-        {
-          headers: {
-            Authorization: `${Token}`,
-          },
-        }
-      )
+      .get("http://localhost:8090/api/applyJob/getUserAppliedJobs", {
+        headers: {
+          Authorization: `${Token}`,
+        },
+      })
 
       .then((res) => {
         // setApplied(res.data.userAppliedjobs);

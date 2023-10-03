@@ -10,13 +10,33 @@ import ResetPW from "./pages/ResetPW";
 import ActivateEmailTemp from "./components/EmailTemp/ActivateEmailTemp";
 import Notices from "./pages/Notices/Notices";
 import ViewNotice from "./pages/Notices/ViewNotice";
-
 import ApplyNow from "./pages/ApplyNow";
 import Feedbacks from "./pages/Feedbacks/Feedbacks";
+import axios from "axios";
 
 function App() {
-  //Get the user from local storage
-  const Token = localStorage.getItem("token");
+  //get cookie from local storage
+  const cookies = document.cookie;
+  const TokenAuth = cookies.includes("recruitment");
+
+  axios.defaults.withCredentials = true;
+
+  //Session timeout
+  axios.interceptors.response.use(
+    (response) => {
+      return response;
+    },
+    (error) => {
+      const { status } = error.response;
+      const { message } = error.response.data.message;
+      if (status === 401 && message === "Your session is expired!") {
+        document.cookie =
+          "recruitment=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.href = "/";
+      }
+      return Promise.reject(error);
+    }
+  );
 
   return (
     <div
@@ -26,7 +46,7 @@ function App() {
     >
       <BrowserRouter>
         <Routes>
-          {Token ? (
+          {TokenAuth ? (
             <>
               <Route path="/" element={<Navigate to="/Home" />} />
               <Route path="/Login" element={<Navigate to="/Home" />} />

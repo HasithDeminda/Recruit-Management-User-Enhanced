@@ -62,7 +62,7 @@ const EditProfile = () => {
   //Get user data with useEffect
   useEffect(() => {
     axios
-      .get("https://rwa-webapp.azurewebsites.net/api/user/userProfile", {
+      .get("http://localhost:8090/api/user/userProfile", {
         headers: {
           Authorization: `${Token}`,
         },
@@ -178,7 +178,7 @@ const EditProfile = () => {
             console.log(updatedProfle);
             axios
               .patch(
-                "https://rwa-webapp.azurewebsites.net/api/user/userUpdateProfile",
+                "http://localhost:8090/api/user/userUpdateProfile",
                 updatedProfle,
                 {
                   headers: {
@@ -206,7 +206,7 @@ const EditProfile = () => {
         }
       );
     }
-  };
+  }
 
   return (
     <div>
@@ -236,16 +236,16 @@ const EditProfile = () => {
                 <label>First Name</label>
               </div>
               {updateError.firstNameError && (
-              <div
-                style={{
-                  fontSize: "12px",
-                  color: "red",
-                  marginTop: "-10px",
-                }}
-              >
-                {updateError.firstNameError}
-              </div>
-            )}
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "red",
+                    marginTop: "-10px",
+                  }}
+                >
+                  {updateError.firstNameError}
+                </div>
+              )}
               <div className="input-box">
                 <input
                   type="text"
@@ -258,16 +258,16 @@ const EditProfile = () => {
                 <label>Last Name</label>
               </div>
               {updateError.lastNameError && (
-              <div
-                style={{
-                  fontSize: "12px",
-                  color: "red",
-                  marginTop: "-10px",
-                }}
-              >
-                {updateError.lastNameError}
-              </div>
-            )}
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "red",
+                    marginTop: "-10px",
+                  }}
+                >
+                  {updateError.lastNameError}
+                </div>
+              )}
               <div className="input-box">
                 <input
                   type="text"
@@ -280,23 +280,18 @@ const EditProfile = () => {
                 <label>Contact Number</label>
               </div>
               {updateError.phoneNoError && (
-              <div
-                style={{
-                  fontSize: "12px",
-                  color: "red",
-                  marginTop: "-10px",
-                }}
-              >
-                {updateError.phoneNoError}
-              </div>
-            )}
+                <div
+                  style={{
+                    fontSize: "12px",
+                    color: "red",
+                    marginTop: "-10px",
+                  }}
+                >
+                  {updateError.phoneNoError}
+                </div>
+              )}
               <div className="input-box">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  readonly
-                />
+                <input type="email" required value={email} readonly />
                 <label>Email</label>
               </div>
 

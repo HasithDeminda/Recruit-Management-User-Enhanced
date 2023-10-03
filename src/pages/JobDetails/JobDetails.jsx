@@ -51,9 +51,7 @@ const JobDetails = () => {
     function getDetails() {
       setLoading(true);
       axios
-        .get(
-          `https://rwa-webapp.azurewebsites.net/api/jobMgt/GetSpecificJob/${id}`
-        )
+        .get(`http://localhost:8090/api/jobMgt/GetSpecificJob/${id}`)
 
         .then((res) => {
           set_id(res.data.job._id);
@@ -104,9 +102,7 @@ const JobDetails = () => {
       };
       setAxiosToken(Token);
 
-      await axios.post(
-        `https://rwa-webapp.azurewebsites.net/api/savedjobs/savejob/${id}`
-      );
+      await axios.post(`http://localhost:8090/api/savedjobs/savejob/${id}`);
 
       setNotify({
         isOpen: true,
