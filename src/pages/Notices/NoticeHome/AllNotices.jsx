@@ -23,10 +23,9 @@ const AllNotices = () => {
   useEffect(() => {
     function getNotices() {
       axios
-        .get(`https://rwa-webapp.azurewebsites.net/api/notice/GetAllActiveNotices`)
+        .get(`http://localhost:8090/api/notice/GetAllActiveNotices`)
         .then((res) => {
           setNotices(res.data.allActivenotices);
-
         })
         .catch((err) => {
           alert(err.message);

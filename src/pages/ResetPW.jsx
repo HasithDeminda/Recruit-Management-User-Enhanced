@@ -26,7 +26,7 @@ const ResetPW = () => {
       } else if (newPassword.length < 6) {
         setError("Password must be at least 6 characters");
       } else {
-        const url = `https://rwa-webapp.azurewebsites.net/api/user/UserResetPassword`;
+        const url = `http://localhost:8090/api/user/UserResetPassword`;
         const data = { oldPassword: oldPassword, newPassword: newPassword };
 
         const setAxiosToken = (token) => {

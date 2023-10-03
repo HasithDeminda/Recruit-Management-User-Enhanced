@@ -19,6 +19,7 @@ const Signup = () => {
     emailError: "",
   });
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   //Alert Notification
   const [notify, setNotify] = useState({
@@ -29,6 +30,7 @@ const Signup = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const EmailRegex = new RegExp(
         "^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$"
@@ -72,25 +74,29 @@ const Signup = () => {
             email,
             password,
           };
-          const url =
-            "https://rwa-webapp.azurewebsites.net/api/user/userRegister";
-          await axios.post(url, data).then((res) => {
-            setNotify({
-              isOpen: true,
-              message: "Registered Successfully!",
-              type: "success",
-            });
+          const url = "http://localhost:8090/api/user/userRegister";
+          await axios
+            .post(url, data)
+            .then((res) => {
+              setNotify({
+                isOpen: true,
+                message: "Registered Successfully!",
+                type: "success",
+              });
 
-            setTimeout(navigate("/ActivationEmail"), 1500);
-            console.log(res.message);
-          })
-          .catch((err) => {
-            setNotify({
-              isOpen: true,
-              message: "Error In Registering",
-              type: "error",
+              setTimeout(navigate("/ActivationEmail"), 1500);
+              console.log(res.message);
+            })
+            .catch((err) => {
+              setNotify({
+                isOpen: true,
+                message: "Error In Registering",
+                type: "error",
+              });
+            })
+            .finally(() => {
+              setLoading(false);
             });
-          });
         }
       }
     } catch (error) {
@@ -101,6 +107,7 @@ const Signup = () => {
       ) {
         setError(error.response.data.message);
       }
+      setLoading(false);
     }
   };
 
@@ -217,8 +224,12 @@ const Signup = () => {
                 className={styles.input}
               />
               {error && <div className={styles.error_msg}>{error}</div>}
-              <button type="submit" className={styles.green_btn}>
-                Sign Up
+              <button
+                type="submit"
+                disabled={loading}
+                className={styles.green_btn}
+              >
+                {loading ? "Signing Up..." : "Sign Up"}
               </button>
             </form>
           </div>

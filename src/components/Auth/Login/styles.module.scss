@@ -98,6 +98,13 @@
   margin: 10px;
 }
 
+.green_btn:disabled {
+  background-color: #bfbfbf;
+  color: white;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media screen and (max-width: 1250px) {
   .input {
     width: 100% !important;

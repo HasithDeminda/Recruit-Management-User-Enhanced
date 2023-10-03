@@ -49,7 +49,7 @@ const UpdateFeedbackPopup = (props) => {
 
     await axios
       .put(
-        `https://rwa-webapp.azurewebsites.net/api/feedbacks/updateFeedback/${props._id}`,
+        `http://localhost:8090/api/feedbacks/updateFeedback/${props._id}`,
         updateObject,
         {
           headers: {

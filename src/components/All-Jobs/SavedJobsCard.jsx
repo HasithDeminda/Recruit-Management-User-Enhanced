@@ -1,4 +1,4 @@
-import {React, useState} from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
 import truncate from "truncate";
 import ConfirmDialog from "../../components/Modals/ConfirmDialog";
@@ -6,7 +6,6 @@ import Notifications from "../../components/Modals/Notifications";
 import axios from "axios";
 import { MdDelete } from "react-icons/md";
 import { red } from "@mui/material/colors";
-
 
 const SavedJobsCard = (props) => {
   const { _id, jobTitle, companyName, descImgUrl, jobType, location } =
@@ -34,7 +33,7 @@ const SavedJobsCard = (props) => {
       isOpen: false,
     });
     axios
-      .delete(`https://rwa-webapp.azurewebsites.net/api/savedjobs/deleteJob/${_id}`, {
+      .delete(`http://localhost:8090/api/savedjobs/deleteJob/${_id}`, {
         headers: {
           Authorization: `${Token}`,
         },
@@ -138,6 +137,6 @@ const SavedJobsCard = (props) => {
       <Notifications notify={notify} setNotify={setNotify} />
     </div>
   );
-}
+};
 
-export default SavedJobsCard
+export default SavedJobsCard;

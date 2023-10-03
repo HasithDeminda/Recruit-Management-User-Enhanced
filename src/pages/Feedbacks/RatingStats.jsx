@@ -100,7 +100,7 @@ export class RatingStat extends React.Component {
 
   componentDidMount() {
     axios
-      .get(`https://rwa-webapp.azurewebsites.net/api/feedbacks/getFeedbacks`)
+      .get(`http://localhost:8090/api/feedbacks/getFeedbacks`)
       .then((res) => {
         //console.log(res.data.ratings);
         this.setState({

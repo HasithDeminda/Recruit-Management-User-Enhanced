@@ -73,16 +73,13 @@ const Feedbacks = () => {
       ...ConfirmDialog,
       isOpen: false,
     });
-    console.log("whdbvhwevhwbvkwvkwebv")
+    console.log("whdbvhwevhwbvkwvkwebv");
     axios
-      .delete(
-        `https://rwa-webapp.azurewebsites.net/api/feedbacks/deleteFeedback/${id}`,
-        {
-          headers: {
-            Authorization: `${Token}`,
-          },
-        }
-      )
+      .delete(`http://localhost:8090/api/feedbacks/deleteFeedback/${id}`, {
+        headers: {
+          Authorization: `${Token}`,
+        },
+      })
       .then((res) => {
         setNotify({
           isOpen: true,
@@ -116,15 +113,11 @@ const Feedbacks = () => {
     };
 
     axios
-      .post(
-        "https://rwa-webapp.azurewebsites.net/api/feedbacks/addFeedback",
-        feedback,
-        {
-          headers: {
-            Authorization: `${Token}`,
-          },
-        }
-      )
+      .post("http://localhost:8090/api/feedbacks/addFeedback", feedback, {
+        headers: {
+          Authorization: `${Token}`,
+        },
+      })
       .then((res) => {
         setNotify({
           isOpen: true,
@@ -148,7 +141,7 @@ const Feedbacks = () => {
   useEffect(() => {
     const getDetails = () => {
       axios
-        .get("https://rwa-webapp.azurewebsites.net/api/feedbacks/getFeedbacks")
+        .get("http://localhost:8090/api/feedbacks/getFeedbacks")
 
         .then((res) => {
           setFeedbacks(res.data.feedbacks);
@@ -161,7 +154,7 @@ const Feedbacks = () => {
 
     const getUser = () => {
       axios
-        .get("https://rwa-webapp.azurewebsites.net/api/user/userProfile", {
+        .get("http://localhost:8090/api/user/userProfile", {
           headers: {
             Authorization: `${Token}`,
           },
